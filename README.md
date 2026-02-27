@@ -1,6 +1,6 @@
 # advanced-whatsapp-chat-for-wordpress
 
-A WordPress plugin for an advanced floating WhatsApp widget (g12-child style behavior).
+A WordPress plugin for an advanced floating WhatsApp widget.
 
 ## Features
 
@@ -21,8 +21,8 @@ A WordPress plugin for an advanced floating WhatsApp widget (g12-child style beh
 - `assets/css/awcwp-chat.css` (advanced widget styles)
 - `assets/js/awcwp-chat.js` (advanced widget behavior)
 - `preview.html` (standalone advanced preview)
-- `assets/css/preview-g12-demo.css` (preview-only styles)
-- `assets/js/preview-g12-demo.js` (preview-only behavior)
+- `assets/css/preview-demo.css` (preview-only styles)
+- `assets/js/preview-demo.js` (preview-only behavior)
 
 ## Quick Use
 

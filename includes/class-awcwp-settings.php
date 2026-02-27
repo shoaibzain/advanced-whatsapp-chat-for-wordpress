@@ -132,7 +132,7 @@ class AWCWP_Settings {
             'awcwp_main_section',
             'Advanced Widget Settings',
             function () {
-                echo '<p>Configure the same advanced popup WhatsApp behavior as g12-child.</p>';
+                echo '<p>Configure the advanced popup WhatsApp behavior.</p>';
             },
             'awcwp-settings'
         );
