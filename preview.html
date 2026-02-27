@@ -6,29 +6,168 @@
     <title>Advanced WhatsApp Chat Preview</title>
     <link rel="stylesheet" href="assets/css/awcwp-chat.css">
     <style>
+        :root {
+            --bg-1: #f5f7fa;
+            --bg-2: #e4efe9;
+            --card: #ffffff;
+            --text: #1f2937;
+            --muted: #475569;
+            --border: #e2e8f0;
+            --focus: #0f766e;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             min-height: 100vh;
             font-family: Arial, sans-serif;
-            background: linear-gradient(120deg, #f5f7fa, #e4efe9);
-            color: #1f2937;
+            background: linear-gradient(120deg, var(--bg-1), var(--bg-2));
+            color: var(--text);
         }
 
         .preview-card {
-            max-width: 680px;
-            margin: 60px auto;
-            background: #ffffff;
+            max-width: 760px;
+            margin: 42px auto;
+            background: var(--card);
             border-radius: 16px;
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
             padding: 24px;
+        }
+
+        .preview-card h1 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .preview-card p {
+            margin: 0 0 16px;
+            color: var(--muted);
+        }
+
+        .demo-grid {
+            display: grid;
+            gap: 12px;
+            grid-template-columns: 1fr 1fr;
+            margin: 18px 0;
+        }
+
+        .demo-grid label {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .demo-grid .full {
+            grid-column: 1 / -1;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            margin-top: 6px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 10px 12px;
+            font: inherit;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: 2px solid var(--focus);
+            outline-offset: 1px;
+            border-color: var(--focus);
+        }
+
+        textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        button {
+            border: 0;
+            border-radius: 999px;
+            padding: 10px 14px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .apply-btn {
+            background: #0f766e;
+            color: #ffffff;
+        }
+
+        .preset-btn {
+            background: #e2f4f1;
+            color: #0f766e;
+        }
+
+        .demo-url {
+            display: block;
+            margin-top: 14px;
+            font-size: 13px;
+            word-break: break-all;
+            color: #0f766e;
+        }
+
+        @media (max-width: 767px) {
+            .preview-card {
+                margin: 18px;
+                padding: 18px;
+            }
+
+            .demo-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <div class="preview-card">
         <h1>Advanced WhatsApp Chat Preview</h1>
-        <p>This page previews the floating WhatsApp button outside WordPress.</p>
-        <p>In WordPress, settings come from the plugin admin page.</p>
+        <p>Same plugin feature with editable demo data for quick testing.</p>
+
+        <form id="demo-form">
+            <div class="demo-grid">
+                <label>
+                    Demo Phone
+                    <input id="demo-phone" type="text" value="15551234567" placeholder="Country code + number">
+                </label>
+                <label>
+                    Button Text
+                    <input id="demo-text" type="text" value="Chat on WhatsApp">
+                </label>
+                <label class="full">
+                    Demo Message
+                    <textarea id="demo-message">Hello, I found your website and want more details.</textarea>
+                </label>
+                <label>
+                    Position
+                    <select id="demo-position">
+                        <option value="right" selected>Right</option>
+                        <option value="left">Left</option>
+                    </select>
+                </label>
+            </div>
+
+            <div class="actions">
+                <button type="submit" class="apply-btn">Apply Demo Data</button>
+                <button type="button" class="preset-btn" data-preset="sales">Sales Demo</button>
+                <button type="button" class="preset-btn" data-preset="support">Support Demo</button>
+            </div>
+        </form>
+
+        <a id="demo-url" class="demo-url" href="#" target="_blank" rel="noopener noreferrer">WhatsApp URL will appear here.</a>
     </div>
 
     <div class="awcwp-wrap awcwp-floating">
@@ -39,12 +178,80 @@
     </div>
 
     <script>
-        window.awcwpData = {
-            phone: '15551234567',
-            message: 'Hello, I found your website and want more details.',
-            text: 'Chat on WhatsApp',
-            position: 'right'
-        };
+        (function () {
+            var presets = {
+                sales: {
+                    phone: '15550100111',
+                    text: 'Talk to Sales',
+                    message: 'Hi, I want pricing and package details.',
+                    position: 'right'
+                },
+                support: {
+                    phone: '15550900999',
+                    text: 'Need Support',
+                    message: 'Hello support team, I need help with my order.',
+                    position: 'left'
+                }
+            };
+
+            function readForm() {
+                return {
+                    phone: document.getElementById('demo-phone').value,
+                    text: document.getElementById('demo-text').value,
+                    message: document.getElementById('demo-message').value,
+                    position: document.getElementById('demo-position').value
+                };
+            }
+
+            function writeForm(data) {
+                document.getElementById('demo-phone').value = data.phone || '';
+                document.getElementById('demo-text').value = data.text || '';
+                document.getElementById('demo-message').value = data.message || '';
+                document.getElementById('demo-position').value = data.position === 'left' ? 'left' : 'right';
+            }
+
+            function updateDemoUrl(data) {
+                var phone = (data.phone || '').replace(/\D+/g, '');
+                var link = document.getElementById('demo-url');
+
+                if (!phone) {
+                    link.href = '#';
+                    link.textContent = 'Add a demo phone number to generate WhatsApp URL.';
+                    return;
+                }
+
+                var url = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(data.message || 'Hello, I need help.');
+                link.href = url;
+                link.textContent = url;
+            }
+
+            function applyData(data) {
+                window.awcwpData = data;
+                if (typeof window.awcwpRenderChat === 'function') {
+                    window.awcwpRenderChat(data);
+                }
+                updateDemoUrl(data);
+            }
+
+            document.getElementById('demo-form').addEventListener('submit', function (event) {
+                event.preventDefault();
+                applyData(readForm());
+            });
+
+            document.querySelectorAll('[data-preset]').forEach(function (button) {
+                button.addEventListener('click', function () {
+                    var presetKey = button.getAttribute('data-preset');
+                    var presetData = presets[presetKey];
+                    if (!presetData) {
+                        return;
+                    }
+                    writeForm(presetData);
+                    applyData(readForm());
+                });
+            });
+
+            applyData(readForm());
+        })();
     </script>
     <script src="assets/js/awcwp-chat.js"></script>
 </body>
