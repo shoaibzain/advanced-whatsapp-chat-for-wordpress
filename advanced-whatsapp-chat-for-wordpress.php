@@ -32,9 +32,16 @@ class AWCWP_Plugin {
 
     public function enqueue_assets() {
         wp_enqueue_style(
+            'awcwp-google-font-poppins',
+            'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap',
+            array(),
+            null
+        );
+
+        wp_enqueue_style(
             'awcwp-style',
             AWCWP_URL . 'assets/css/awcwp-chat.css',
-            array(),
+            array('awcwp-google-font-poppins'),
             AWCWP_VERSION
         );
 

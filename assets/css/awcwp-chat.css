@@ -1,5 +1,5 @@
 .floating-whatsapp {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
 }
 
 .floating-whatsapp__btn {
@@ -252,7 +252,7 @@
     border: 1px solid rgba(121, 121, 122, 1);
     border-radius: 4px;
     color: #000000;
-    font-family: Graphik, Arial, Helvetica, sans-serif;
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
     font-size: 14px;
     line-height: 1;
     margin-bottom: 1rem;

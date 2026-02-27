@@ -14,7 +14,7 @@
 body {
     margin: 0;
     min-height: 100vh;
-    font-family: Arial, sans-serif;
+    font-family: "Poppins", Arial, sans-serif;
     color: var(--wa-dark);
     background: radial-gradient(circle at 20% 20%, #eef8f2, transparent 35%),
         radial-gradient(circle at 80% 0%, #eaf2ff, transparent 35%),
@@ -48,7 +48,7 @@ body {
 }
 
 .floating-whatsapp {
-    font-family: Arial, sans-serif;
+    font-family: "Poppins", Arial, sans-serif;
 }
 
 .floating-whatsapp__btn {
