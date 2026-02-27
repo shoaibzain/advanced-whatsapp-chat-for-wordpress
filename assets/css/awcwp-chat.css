@@ -137,12 +137,14 @@
 .floating-whatsapp__content {
     background: #ffffff;
     max-height: 400px;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     padding: 12px 20px;
     text-align: left;
 }
 
 .floating-whatsapp__content-item-box {
+    box-sizing: border-box;
     background: #f5f7f9;
     border-left: 2px solid #2db742;
     border-radius: 2px 4px 2px 4px;
@@ -236,6 +238,7 @@
     opacity: 1;
     transform: translateY(0);
     visibility: visible;
+    overflow-x: hidden;
 }
 
 .floating-whatsapp__form p {

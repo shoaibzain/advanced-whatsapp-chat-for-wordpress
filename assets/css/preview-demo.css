@@ -180,7 +180,8 @@ body {
     background: #ffffff;
     padding: 12px;
     max-height: 440px;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .floating-whatsapp__content-item-box {
