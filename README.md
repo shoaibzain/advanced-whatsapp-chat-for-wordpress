@@ -29,22 +29,9 @@ A WordPress plugin for an advanced floating WhatsApp widget.
 1. Upload this folder to your WordPress `wp-content/plugins` directory.
 2. Activate **Advanced WhatsApp Chat for WordPress** in wp-admin.
 3. Go to **Settings > WhatsApp Chat**.
-4. Edit heading/title and `Team Members (JSON)`.
-5. Save settings.
-
-## Team Members JSON Schema
-
-Each member object supports:
-
-- `name`
-- `language`
-- `number`
-- `predefined_text`
-- `form_details`
-- `form_url`
-- `avatar_url`
-- `status` (`1` to hide member)
-- `order`
+4. Edit heading/title and widget position.
+5. Manage members from **Team Members** menu (custom post type).
+6. Save settings.
 
 ## Preview
 

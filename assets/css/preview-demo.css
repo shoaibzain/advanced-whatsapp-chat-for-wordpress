@@ -66,16 +66,36 @@ body {
     border-radius: 50%;
     background: var(--wa-green);
     box-shadow: 0 8px 20px rgba(37, 211, 102, 0.45);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: relative;
     cursor: pointer;
-    color: #ffffff;
-    font-size: 28px;
-    font-weight: 700;
-    line-height: 1;
+    color: transparent;
     transition: transform 0.2s ease;
     animation: waves-whatsapp 3s linear infinite;
+}
+
+.floating-whatsapp__icon::before,
+.floating-whatsapp__icon::after {
+    content: "";
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: all 0.3s ease;
+}
+
+.floating-whatsapp__icon::before {
+    background: transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTEzLjYwMSAyLjMyNkE3Ljg1NCA3Ljg1NCAwIDAgMCA4LjAwMyAwQzMuNTggMCAwIDMuNTggMCA4LjAwM2E3Ljk1OCA3Ljk1OCAwIDAgMCAxLjE0NyA0LjEyTDAgMTZsMy45OTctMS4xMzJBNy45NjUgNy45NjUgMCAwIDAgOC4wMDMgMTZDMTIuNDI1IDE2IDE2IDEyLjQyNSAxNiA4LjAwM2E3LjkzIDcuOTMgMCAwIDAtMi4zOTktNS42Nzd6TTguMDAzIDE0LjVhNi40OSA2LjQ5IDAgMCAxLTMuMzA5LS45MDhsLS4yMzYtLjE0LTIuMzcuNjcuNjMzLTIuMzEtLjE1NC0uMjM3QTYuNDggNi40OCAwIDAgMSAxLjUgOC4wMDMgNi41IDYuNSAwIDAgMSA4LjAwMyAxLjVjMS43MzcgMCAzLjM2LjY3NiA0LjU5IDEuOTA0QTYuNDQgNi40NCAwIDAgMSAxNC41IDguMDAzIDYuNSA2LjUgMCAwIDEgOC4wMDMgMTQuNXoiLz48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTEuMzQgOS42MTNjLS4xODMtLjA5MS0xLjA4My0uNTM0LTEuMjUtLjU5NC0uMTY4LS4wNi0uMjktLjA5MS0uNDEzLjA5MS0uMTIyLjE4My0uNDczLjU5NC0uNTguNzE2LS4xMDYuMTIyLS4yMTMuMTM3LS4zOTYuMDQ2LS4xODMtLjA5MS0uNzczLS4yODUtMS40NzItLjkwOS0uNTQ0LS40ODUtLjkxMi0xLjA4NC0xLjAyLTEuMjY3LS4xMDYtLjE4My0uMDExLS4yODIuMDgtLjM3My4wODItLjA4Mi4xODMtLjIxMy4yNzQtLjMyLjA5MS0uMTA2LjEyMi0uMTgzLjE4My0uMzA1LjA2MS0uMTIyLjAzLS4yMjktLjAxNS0uMzItLjA0Ni0uMDkxLS40MTMtLjk5Ni0uNTY1LTEuMzY1LS4xNDktLjM2LS4zLS4zMS0uNDEzLS4zMTZsLS4zNTEtLjAwNmMtLjEyMiAwLS4zMi4wNDYtLjQ4OC4yMjktLjE2OC4xODMtLjY0LjYyNS0uNjQgMS41MjVzLjY1NSAxLjc3Ljc0NyAxLjg5MmMuMDkxLjEyMiAxLjI4NyAxLjk2NSAzLjEyIDIuNzU3LjQzNi4xODguNzc2LjMgMS4wNDEuMzg0LjQzNy4xMzkuODM1LjEyIDEuMTUuMDczLjM1MS0uMDUyIDEuMDgzLS40NDIgMS4yMzUtLjg3LjE1My0uNDI3LjE1My0uNzkzLjEwNy0uODctLjA0Ni0uMDc2LS4xNjgtLjEyMi0uMzUtLjIxM3oiLz48L3N2Zz4=") 50% no-repeat;
+    background-size: 30px auto;
+    z-index: 1;
+}
+
+.floating-whatsapp__icon::after {
+    background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14'%3E%3Cpath fill='%23fff' d='M8.659 6.998l5-5a1.177 1.177 0 000-1.657 1.177 1.177 0 00-1.657 0l-5 5-5-5A1.172 1.172 0 00.345 1.998l5 5-5 5a1.172 1.172 0 000 1.657 1.177 1.177 0 001.657 0l5-5 5 5a1.177 1.177 0 001.657 0 1.177 1.177 0 000-1.657l-5-5z'/%3E%3C/svg%3E") 50% no-repeat;
+    background-size: 14px auto;
+    opacity: 0;
+    transform: scale(0) rotate(-1turn);
+    z-index: 2;
 }
 
 .floating-whatsapp__icon:focus-visible {
@@ -89,6 +109,16 @@ body {
 
 .floating-whatsapp__icon.active {
     background: #111827;
+}
+
+.floating-whatsapp__icon.active::before {
+    opacity: 0;
+    transform: scale(0) rotate(1turn);
+}
+
+.floating-whatsapp__icon.active::after {
+    opacity: 1;
+    transform: scale(1) rotate(0);
 }
 
 .floating-whatsapp__chat-box {

@@ -54,12 +54,21 @@ class AWCWP_Plugin {
         );
 
         $settings = AWCWP_Settings::get_settings();
+        $members = AWCWP_Settings::get_team_members_from_cpt();
+
+        if (empty($members)) {
+            $members = AWCWP_Settings::sanitize_team_members($settings['team_members']);
+        }
+
+        if (empty($members)) {
+            $members = AWCWP_Settings::default_members();
+        }
 
         wp_localize_script('awcwp-script', 'awcwpData', array(
             'title' => $settings['title'],
             'intro' => $settings['intro'],
             'position' => in_array($settings['position'], array('left', 'right'), true) ? $settings['position'] : 'right',
-            'members' => $settings['team_members'],
+            'members' => $members,
             'strings' => array(
                 'noMembers' => 'No team members found.',
                 'missingPhone' => 'Selected member has no WhatsApp number.',
@@ -92,7 +101,11 @@ class AWCWP_Plugin {
 
     private function get_widget_markup($context = 'footer') {
         $settings = AWCWP_Settings::get_settings();
-        $members = AWCWP_Settings::sanitize_team_members($settings['team_members']);
+        $members = AWCWP_Settings::get_team_members_from_cpt();
+
+        if (empty($members)) {
+            $members = AWCWP_Settings::sanitize_team_members($settings['team_members']);
+        }
 
         if (empty($members)) {
             $members = AWCWP_Settings::default_members();
