@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Advanced WhatsApp Chat Preview</title>
+    <link rel="stylesheet" href="assets/css/awcwp-chat.css">
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(120deg, #f5f7fa, #e4efe9);
+            color: #1f2937;
+        }
+
+        .preview-card {
+            max-width: 680px;
+            margin: 60px auto;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+            padding: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-card">
+        <h1>Advanced WhatsApp Chat Preview</h1>
+        <p>This page previews the floating WhatsApp button outside WordPress.</p>
+        <p>In WordPress, settings come from the plugin admin page.</p>
+    </div>
+
+    <div class="awcwp-wrap awcwp-floating">
+        <a class="awcwp-button" href="#" aria-label="Open WhatsApp Chat">
+            <span class="awcwp-icon" aria-hidden="true">W</span>
+            <span class="awcwp-text"></span>
+        </a>
+    </div>
+
+    <script>
+        window.awcwpData = {
+            phone: '15551234567',
+            message: 'Hello, I found your website and want more details.',
+            text: 'Chat on WhatsApp',
+            position: 'right'
+        };
+    </script>
+    <script src="assets/js/awcwp-chat.js"></script>
+</body>
+</html>

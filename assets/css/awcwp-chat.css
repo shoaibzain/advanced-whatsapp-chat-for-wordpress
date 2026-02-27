@@ -1,0 +1,66 @@
+.awcwp-wrap {
+    z-index: 9999;
+}
+
+.awcwp-floating {
+    position: fixed;
+    bottom: 24px;
+}
+
+.awcwp-floating .awcwp-button {
+    display: inline-flex;
+}
+
+.awcwp-floating.awcwp-left,
+.awcwp-wrap.awcwp-left {
+    left: 24px;
+}
+
+.awcwp-floating.awcwp-right,
+.awcwp-wrap.awcwp-right {
+    right: 24px;
+}
+
+.awcwp-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    background: #25d366;
+    color: #ffffff;
+    border-radius: 999px;
+    padding: 12px 16px;
+    font-weight: 600;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.awcwp-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+
+.awcwp-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #25d366;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.awcwp-shortcode {
+    position: static;
+    display: inline-flex;
+}
+
+@media (max-width: 767px) {
+    .awcwp-button {
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+}
