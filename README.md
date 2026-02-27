@@ -19,4 +19,12 @@ A lightweight WordPress plugin for a floating WhatsApp chat button.
 
 Use shortcode: `[awcwp_chat]`
 
-# advanced-whatsapp-chat-for-wordpress
+## Preview
+
+### Screenshot 1
+
+![Screenshot 1](assets/img/Screenshot_1.png)
+
+### Screenshot 2
+
+![Screenshot 2](assets/img/Screenshot_2.png)
